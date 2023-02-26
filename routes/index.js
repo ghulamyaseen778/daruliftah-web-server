@@ -3,7 +3,8 @@ const routes = express.Router();
 const {FatwaControllers} = require('../controllers/FatwaControllers')
 const {ContactsControllers} = require('../controllers/ContactControllers')
 const {CategoryControllers} = require('../controllers/CategoryControllers')
-const {AdminControllers} = require('../controllers/AdminControllers')
+const {AdminControllers} = require('../controllers/AdminControllers');
+const { EmailControllers } = require('../controllers/EmailControllers');
 const FatwaRoute =  "/fatwa";
 const ContactRoute = "/contact";
 const CategoryRoute = "/category";
@@ -22,6 +23,7 @@ routes.get(CategoryRoute,CategoryControllers.getFatwaController)
 routes.post(CategoryRoute,CategoryControllers.postFatwaController)
 routes.put(CategoryRoute,CategoryControllers.UpdateFatwaController)
 routes.delete(CategoryRoute,CategoryControllers.DeleteFatwaController)
+routes.get("/email",EmailControllers.postEmailController)
 
 //admin routes
 routes.post('/create',AdminControllers.postCreateFatwaController)
