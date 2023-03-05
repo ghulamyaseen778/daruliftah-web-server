@@ -4,12 +4,13 @@ const {GetFatwaData,GetSingleFatwaData,PostFatwaData,UpdateFatwaData,DeleteFatwa
 
 const GetService = (req,res)=>{
     try {
-        const { category } = req.query //query strings
+        const { category,page } = req.query //query strings
 
         const queryObject = {} //query object
         if (category) {
             queryObject.category = category
         }//check catagory in query object
+        
         GetFatwaData(queryObject,res)
     } catch (error) {
         RequestAndResponseHandler(MsgFunc.msg1,null,res)

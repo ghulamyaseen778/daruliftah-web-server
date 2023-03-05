@@ -5,6 +5,7 @@ const {ContactsControllers} = require('../controllers/ContactControllers')
 const {CategoryControllers} = require('../controllers/CategoryControllers')
 const {AdminControllers} = require('../controllers/AdminControllers');
 const { EmailControllers } = require('../controllers/EmailControllers');
+const { searchController } = require('../controllers/SearchControllers');
 const FatwaRoute =  "/fatwa";
 const ContactRoute = "/contact";
 const CategoryRoute = "/category";
@@ -24,6 +25,7 @@ routes.post(CategoryRoute,CategoryControllers.postFatwaController)
 routes.put(CategoryRoute,CategoryControllers.UpdateFatwaController)
 routes.delete(CategoryRoute,CategoryControllers.DeleteFatwaController)
 routes.get("/email",EmailControllers.postEmailController)
+routes.get("/search",searchController.getSearchController)
 
 //admin routes
 routes.post('/create',AdminControllers.postCreateFatwaController)

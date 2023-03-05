@@ -11,7 +11,6 @@ mongoose.connect(process.env.MONGO_DB_URI)
   .then((res) => console.log("Server connected"))
   .catch((err) => console.log("Server disconnected"))
 //close connection
-
 app.use(express.json()) //intilaize json
 app.use(cors()) //intilaize cors
 app.use('/daruliftah',routes)
