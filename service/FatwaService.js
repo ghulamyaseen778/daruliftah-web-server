@@ -4,12 +4,18 @@ const {GetFatwaData,GetSingleFatwaData,PostFatwaData,UpdateFatwaData,DeleteFatwa
 
 const GetService = (req,res)=>{
     try {
-        const { category,page } = req.query //query strings
+        const { category,keyWord,id } = req.query //query strings
 
         const queryObject = {} //query object
         if (category) {
             queryObject.category = category
         }//check catagory in query object
+        if (keyWord){
+            queryObject.KeyWord = keyWord
+        }
+        if (id){
+            queryObject._id =id
+        }
         
         GetFatwaData(queryObject,res)
     } catch (error) {
