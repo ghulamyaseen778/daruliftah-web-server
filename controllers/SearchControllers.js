@@ -9,7 +9,9 @@ const searchController = {
                 const element = arr[i];
                 if (query == element) {
                     if (req.query.accesss !== undefined) {
-                        
+                        res.json({
+                            data: "kk"
+                        })
                     }
                     else {
                         res.json({
