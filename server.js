@@ -5,6 +5,8 @@ const routes = require('./routes') //import routes
 const app = express() //intilaize express
 const PORT = process.env.PORT || 5000 //define port 
 const cors = require('cors') //import cors
+const { Storage } = require('./config/firebase.config.js')
+const {getDownloadURL, ref, uploadBytes } = require("firebase/storage")
 
 //start connection
 mongoose.connect(process.env.MONGO_DB_URI)
