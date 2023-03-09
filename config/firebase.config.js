@@ -7,12 +7,13 @@ const { getStorage } = require("firebase/storage");
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCWG-s5AEap1arTOILU8N-fRGh1b4aK5no",
-  authDomain: "yyyyy-32949.firebaseapp.com",
-  projectId: "yyyyy-32949",
-  storageBucket: "yyyyy-32949.appspot.com",
-  messagingSenderId: "831076162888",
-  appId: "1:831076162888:web:6539e3af8182abc759a77d"
+  apiKey: "AIzaSyB_GNpk0PaqpJfnzsT5w7MSQiCLO6155Fg",
+  authDomain: "online-ecom.firebaseapp.com",
+  projectId: "online-ecom",
+  storageBucket: "online-ecom.appspot.com",
+  messagingSenderId: "1004148070309",
+  appId: "1:1004148070309:web:139fa51f5d30d6285cfa4c",
+  measurementId: "G-DRQ147JNNH"
 };
 
 // Initialize Firebase
