@@ -9,6 +9,7 @@ const { Storage } = require('./config/firebase.config.js')
 const {getDownloadURL, ref, uploadBytes,uploadBytesResumable } = require("firebase/storage")
 const {upload} = require('./middleware') //import upload
 const multer = require("multer")
+const ClausorSchema = require("./Modals/Images")
 
 //start connection
 mongoose.connect(process.env.MONGO_DB_URI)
@@ -20,19 +21,31 @@ app.use(cors()) //intilaize cors
 app.use('/daruliftah',routes)
 app.use('/admin',routes)
 
-app.post('/upload',upload, (req,res)=>{
+app.post('/upload',upload.single("img"), async (req,res)=>{
   console.log(req.file)
   const metadata = {
-    contentType: 'image/jpeg'
+    contentType: req.file.mimetype
 };
-  const storageRef = ref(Storage,`uploads/${req.file.originalname}`)
+  const storageRef = ref(Storage,`uploads/${req.file.fieldname+"_"+Date.now()}`)
       console.log(storageRef)
   //     const bytes = new Uint8Array([0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x2c, 0x20, 0x77, 0x6f, 0x72, 0x6c, 0x64, 0x21]);
-   uploadBytesResumable(storageRef,req.file,metadata).then((snap)=>{
+  await uploadBytesResumable(storageRef,req.file.buffer,metadata).then((snap)=>{
         console.log("success")
-        // getDownloadURL(storageRef).then((url)=>{
-        //   console.log(url)
-        // })
+        getDownloadURL(storageRef).then((url)=>{
+          // console.log(url)
+          ClausorSchema.create({name:req.body.name,url},(err,data)=>{
+            if (err) {
+              res.status(500).json({
+                data:"something went wrong"
+              })
+            }
+            else{
+              res.json({
+                data
+              })
+            }
+          })
+        })
       })
 })
 
