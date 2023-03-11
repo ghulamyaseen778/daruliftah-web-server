@@ -1,34 +1,34 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema({
-    name: {
-        type: String,
-        required: true
+    Title: {
+        type: String, 
+        required:true
     },
     AuthorName: {
         type: String, 
         required:true
     },
-    category:{
+    Category:{
         type:String,
         required:true
     },
-    question: {
+    Question: {
         type: String,
         required: true
     },
-    answer: {
-        type: String,
+    Answer: {
+        type: Array,
         required: true
     },
-    fatwaNo: {
-        type: Number,
+    FatwaNo: {
+        type: String,
         required: true
     },
     KeyWord: {
         type: Array,
-        default: ['fatawa']
+        required: true
     },
-    createdAt: {
+    CreatedAt: {
         type: Date,
         default: Date.now
     }
