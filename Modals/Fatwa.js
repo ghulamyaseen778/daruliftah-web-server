@@ -20,6 +20,10 @@ const Schema = mongoose.Schema({
         type: Array,
         required: true
     },
+    Bold: {
+        type: Array,
+        required: true
+    },
     FatwaNo: {
         type: String,
         required: true
