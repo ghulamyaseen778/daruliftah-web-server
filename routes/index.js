@@ -24,7 +24,7 @@ routes.get(CategoryRoute,CategoryControllers.getFatwaController)
 routes.post(CategoryRoute,CategoryControllers.postFatwaController)
 routes.put(CategoryRoute,CategoryControllers.UpdateFatwaController)
 routes.delete(CategoryRoute,CategoryControllers.DeleteFatwaController)
-routes.get("/email",EmailControllers.postEmailController)
+routes.post("/email",EmailControllers.postEmailController)
 routes.get("/search",searchController.getSearchController)
 
 //admin routes
