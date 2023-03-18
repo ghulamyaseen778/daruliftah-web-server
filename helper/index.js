@@ -1,6 +1,6 @@
 const RequestAndResponseHandler = (msg,data,HandelResponse)=>{
     if(msg){
-        HandelResponse.json({data:msg})
+        HandelResponse.sendStatus(404)
     }else{
         HandelResponse.json({data})
     }

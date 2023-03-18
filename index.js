@@ -10,6 +10,10 @@ const {getDownloadURL, ref, uploadBytes,uploadBytesResumable } = require("fireba
 const {upload} = require('./middleware') //import upload
 const multer = require("multer")
 const ClausorSchema = require("./Modals/Images")
+const fs = require('fs')
+const pdfParse = require('pdf-parse')
+
+
 
 //start connection
 mongoose.connect(process.env.MONGO_DB_URI)
@@ -20,6 +24,25 @@ app.use(express.json()) //intilaize json
 app.use(cors()) //intilaize cors
 app.use('/daruliftah',routes)
 app.use('/admin',routes)
+
+// app.get("/up",(req,res) =>{
+//   const getPDF = async (file) => {
+//     let readFileSync = fs.readFileSync(file)
+//     try {
+//       let pdfExtract = await pdfParse(readFileSync)
+//       console.log('File content: ', pdfExtract.text)
+//       console.log('Total pages: ', pdfExtract.numpages)
+//       console.log('All content: ', pdfExtract.info)
+//       res.json({
+//         data:pdfExtract.text
+//       })
+//     } catch (error) {
+//       throw new Error(error)
+//     }
+//   }
+//   const pdfRead = './2.wirasat abdullah mukki.pdf'
+//   getPDF(pdfRead)
+// })
 
 app.post('/upload',upload.single("img"), async (req,res)=>{
   console.log(req.file)
