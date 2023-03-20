@@ -53,6 +53,7 @@ const UpdateService = (req,res)=>{
 const DeleteService = (req,res)=>{
     try {
         const {id} = req.body //body string
+        console.log("ok",id)
         DeleteFatwaData(id,res)
     } catch (error) {
         RequestAndResponseHandler(MsgFunc.msg1,null,res)
