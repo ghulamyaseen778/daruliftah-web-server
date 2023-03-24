@@ -46,6 +46,7 @@ app.use('/admin',routes)
 
 app.post('/upload',upload.single("img"), async (req,res)=>{
   console.log(req.file)
+  return
   const metadata = {
     contentType: req.file.mimetype
 };

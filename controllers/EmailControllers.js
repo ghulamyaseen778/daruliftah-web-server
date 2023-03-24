@@ -66,6 +66,27 @@ const EmailControllers = {
     }
     
   },
+  UpdateEmailController: (req, res) => {
+    try {
+      Email.findByIdAndUpdate(req.body.id,{status:false},(err,body)=>{
+        if (err) {
+          res.json({
+            data:"Something went wrong"
+          })
+        }
+        else{
+          res.json({
+            data:body
+          })
+        }
+      })
+    }
+    catch (error) {
+      res.json({
+        data:"Something went wrong"
+      })
+    }
+}
 }
 
 module.exports = { EmailControllers }
