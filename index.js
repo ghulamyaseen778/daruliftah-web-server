@@ -44,9 +44,8 @@ app.use('/admin',routes)
 //   getPDF(pdfRead)
 // })
 
-app.post('/upload',upload.single("img"), async (req,res)=>{
-  console.log(req.file)
-  return
+app.post('/upload',upload.single("file"), async (req,res)=>{
+  console.log(req.file?req.file:null)
   const metadata = {
     contentType: req.file.mimetype
 };
@@ -57,7 +56,7 @@ app.post('/upload',upload.single("img"), async (req,res)=>{
         console.log("success")
         getDownloadURL(storageRef).then((url)=>{
           // console.log(url)
-          ClausorSchema.create({name:req.body.name,url},(err,data)=>{
+          ClausorSchema.create({name:req.body.text,url},(err,data)=>{
             if (err) {
               res.status(500).json({
                 data:"something went wrong"
@@ -65,7 +64,7 @@ app.post('/upload',upload.single("img"), async (req,res)=>{
             }
             else{
               res.json({
-                data
+                data:data
               })
             }
           })
