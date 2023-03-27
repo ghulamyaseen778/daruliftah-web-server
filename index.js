@@ -63,13 +63,43 @@ app.post('/upload',upload.single("file"), async (req,res)=>{
               })
             }
             else{
-              res.json({
+              res.status(200).json({
                 data:data
               })
             }
           })
         })
       })
+})
+
+app.get('/upload',(req,res,next)=>{
+  ClausorSchema.find({},(err,data)=>{
+    if (err) {
+      res.status(500).json({
+        data:"something went wrong"
+      })
+    }
+    else{
+      res.status(200).json({
+        data:data
+      })
+    }
+  })
+})
+
+app.delete('/upload',(req,res,next)=>{
+  ClausorSchema.findByIdAndDelete({_id:req.body.id},(err,data)=>{
+    if (err) {
+      res.status(500).json({
+        data:"something went wrong"
+      })
+    }
+    else{
+      res.status(200).json({
+        data:data
+      })
+    }
+  })
 })
 
   //listen request
